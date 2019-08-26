@@ -47,7 +47,7 @@ const mutations = {
     const hasPermissions = ctx.request.user.permissions.some(permission =>
       ['ADMIN', 'ITEMDELETE'].includes(permission)
     );
-    if (!ownsItem || !hasPermission) {
+    if (!ownsItem && !hasPermissions) {
       throw new Error("You don't have permissions to do that!");
     }
     // 3. Delete it!
